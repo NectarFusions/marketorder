@@ -492,7 +492,7 @@ export default function App() {
     catch (e) { console.error(e); }
   }
 
-  const eyebrow = { fontFamily: "Manrope", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", fontSize: 13, color: COLORS.gold };
+  const eyebrow = { fontFamily: "Manrope", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", fontSize: 24, color: COLORS.gold };
   const display = { fontFamily: "Cormorant" };
 
   return (
@@ -503,7 +503,8 @@ export default function App() {
         body { margin: 0; }
         button { font-family: inherit; cursor: pointer; }
         input, select, textarea { font-family: inherit; }
-        ::placeholder { color: #6b6255; }
+        ::placeholder { color: #666666; }
+        body, p, div, span { line-height: 1.45; }
         .hexbadge { position: relative; }
         @media (prefers-reduced-motion: no-preference) {
           .fade-in { animation: fadeIn 0.25s ease both; }
@@ -516,14 +517,14 @@ export default function App() {
       <div style={{ background: `linear-gradient(180deg, ${COLORS.panel}, ${COLORS.bg})`, borderBottom: `1px solid #3a331f`, padding: "22px 20px" }}>
         <div style={{ maxWidth: 500, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <div style={{ ...display, fontWeight: 700, fontSize: 26, letterSpacing: "0.02em", color: COLORS.cream }}>NectarFusions</div>
-            <div style={{ fontSize: 13, letterSpacing: "0.1em", color: COLORS.gold, marginTop: 2, textTransform: "uppercase" }}>
+            <div style={{ ...display, fontWeight: 700, fontSize: 42, letterSpacing: "0.02em", color: COLORS.cream }}>NectarFusions</div>
+            <div style={{ fontSize: 24, letterSpacing: "0.1em", color: COLORS.gold, marginTop: 2, textTransform: "uppercase" }}>
               Nature's Happiness <span style={{ color: COLORS.muted }}>|</span> Honey Infused
             </div>
           </div>
           <button onClick={() => setView(view === "order" ? "admin" : "order")}
             style={{ background: "none", border: "none", color: COLORS.muted, padding: 6 }} aria-label="Vendor login">
-            <Settings size={18} />
+            <Settings size={22} />
           </button>
         </div>
       </div>
@@ -570,21 +571,21 @@ export default function App() {
 
 const primaryBtnStyle = {
   background: COLORS.gold, color: "#000000", border: "none", borderRadius: 10,
-  padding: "14px 18px", fontWeight: 800, fontSize: 17,
+  padding: "17px 20px", fontWeight: 800, fontSize: 29,
 };
 const secondaryBtnStyle = {
   background: "transparent", color: COLORS.cream, border: `1px solid #5a4f33`, borderRadius: 10,
-  padding: "12px 16px", fontWeight: 700, fontSize: 16,
+  padding: "15px 18px", fontWeight: 700, fontSize: 28,
 };
 const qtyBtnStyle = {
-  width: 34, height: 34, borderRadius: "50%", border: `1px solid #5a4f33`,
+  width: 44, height: 44, borderRadius: "50%", border: `1px solid #5a4f33`,
   background: COLORS.panelLight, color: COLORS.cream, display: "flex", alignItems: "center", justifyContent: "center",
 };
 const inputStyle = {
-  width: "100%", padding: "12px 13px", borderRadius: 8, border: `1px solid #5a4f33`,
-  fontSize: 16, background: COLORS.panelLight, color: COLORS.cream,
+  width: "100%", padding: "14px 15px", borderRadius: 8, border: `2px solid #5a4f33`,
+  fontSize: 24, background: "#FFFFFF", color: "#000000",
 };
-const cardStyle = { background: COLORS.panel, borderRadius: 12, padding: 16, border: "1px solid #3a331f" };
+const cardStyle = { background: COLORS.panel, borderRadius: 12, padding: 18, border: "1px solid #3a331f" };
 
 function StepDots({ step, total = 5 }) {
   return (
@@ -602,7 +603,7 @@ function StepDots({ step, total = 5 }) {
 function Field({ label, children }) {
   return (
     <div style={{ marginBottom: 12 }}>
-      <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 5, color: COLORS.muted }}>{label}</div>
+      <div style={{ fontSize: 25, fontWeight: 700, marginBottom: 5, color: COLORS.muted }}>{label}</div>
       {children}
     </div>
   );
@@ -610,7 +611,7 @@ function Field({ label, children }) {
 
 function EmptyNote({ text }) {
   return (
-    <div style={{ background: "#00000022", borderRadius: 10, padding: 16, fontSize: 15, color: COLORS.muted, textAlign: "center" }}>
+    <div style={{ background: "#00000022", borderRadius: 10, padding: 16, fontSize: 26, color: COLORS.muted, textAlign: "center" }}>
       {text}
     </div>
   );
@@ -618,8 +619,8 @@ function EmptyNote({ text }) {
 
 function BackRow({ onClick }) {
   return (
-    <button onClick={onClick} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 4, padding: "4px 0 10px", color: COLORS.muted, fontWeight: 600, fontSize: 15 }}>
-      <ChevronLeft size={16} /> Back
+    <button onClick={onClick} style={{ background: "none", border: "none", display: "flex", alignItems: "center", gap: 4, padding: "4px 0 10px", color: COLORS.muted, fontWeight: 600, fontSize: 26 }}>
+      <ChevronLeft size={20} /> Back
     </button>
   );
 }
@@ -630,7 +631,7 @@ function NextBar({ onClick, disabled, label }) {
       ...primaryBtnStyle, width: "100%", marginTop: 18, opacity: disabled ? 0.4 : 1,
       display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
     }}>
-      {label} <ChevronRight size={16} />
+      {label} <ChevronRight size={20} />
     </button>
   );
 }
@@ -639,13 +640,13 @@ function FlavorGroup({ title, items, builderFlavorId, setBuilderFlavorId, icon }
   if (items.length === 0) return null;
   return (
     <div style={{ marginBottom: 12 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: COLORS.muted, marginBottom: 6 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 24, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: COLORS.muted, marginBottom: 6 }}>
         {icon} {title}
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {items.map((f) => (
           <button key={f.id} onClick={() => setBuilderFlavorId(f.id)} style={{
-            padding: "8px 14px", borderRadius: 20, fontSize: 15, fontWeight: 700,
+            padding: "8px 14px", borderRadius: 20, fontSize: 26, fontWeight: 700,
             border: builderFlavorId === f.id ? `1px solid ${COLORS.gold}` : "1px solid #3a331f",
             background: builderFlavorId === f.id ? COLORS.gold : COLORS.panelLight,
             color: builderFlavorId === f.id ? "#000000" : COLORS.cream,
@@ -679,16 +680,16 @@ function OrderFlow(props) {
   if (step === 0) {
     return (
       <div style={{ maxWidth: 500, margin: "0 auto", padding: "28px 16px 60px" }} className="fade-in">
-        <div style={{ ...display, fontSize: 32, fontWeight: 600, textAlign: "center", marginBottom: 6 }}>What can we get you?</div>
-        <div style={{ textAlign: "center", color: COLORS.muted, fontSize: 16, marginBottom: 24 }}>Raw Michigan honey, infused with real flavor.</div>
+        <div style={{ ...display, fontSize: 52, fontWeight: 600, textAlign: "center", marginBottom: 6 }}>What can we get you?</div>
+        <div style={{ textAlign: "center", color: COLORS.muted, fontSize: 28, marginBottom: 24 }}>Raw Michigan honey, infused with real flavor.</div>
 
         <button onClick={() => { setOrderType("pickup"); setStep(1); }} style={{
           ...cardStyle, width: "100%", textAlign: "left", marginBottom: 14, display: "flex", gap: 14, alignItems: "flex-start",
         }}>
           <ShoppingBasket size={26} color={COLORS.gold} style={{ flexShrink: 0, marginTop: 2 }} />
           <div>
-            <div style={{ ...display, fontWeight: 700, fontSize: 21 }}>Order for Pickup</div>
-            <div style={{ fontSize: 15, color: COLORS.muted, marginTop: 4, lineHeight: 1.5 }}>
+            <div style={{ ...display, fontWeight: 700, fontSize: 34 }}>Order for Pickup</div>
+            <div style={{ fontSize: 26, color: COLORS.muted, marginTop: 4, lineHeight: 1.5 }}>
               Build your order, pick a market, and reserve a pickup time. Pay cash or card when you arrive.
             </div>
           </div>
@@ -699,8 +700,8 @@ function OrderFlow(props) {
         }}>
           <PartyPopper size={26} color={COLORS.orange} style={{ flexShrink: 0, marginTop: 2 }} />
           <div>
-            <div style={{ ...display, fontWeight: 700, fontSize: 21 }}>Request Honey for an Event</div>
-            <div style={{ fontSize: 15, color: COLORS.muted, marginTop: 4, lineHeight: 1.5 }}>
+            <div style={{ ...display, fontWeight: 700, fontSize: 34 }}>Request Honey for an Event</div>
+            <div style={{ fontSize: 26, color: COLORS.muted, marginTop: 4, lineHeight: 1.5 }}>
               Weddings, corporate gifts, big batches — tell us what you need and we'll follow up with a quote.
             </div>
           </div>
@@ -717,8 +718,8 @@ function OrderFlow(props) {
           <div style={{ width: 64, height: 64, borderRadius: "50%", background: COLORS.orange, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
             <Check size={30} color="#000000" />
           </div>
-          <div style={{ ...display, fontSize: 26, fontWeight: 700 }}>Got it, {eventForm.firstName}!</div>
-          <div style={{ fontSize: 16, color: COLORS.muted, marginTop: 8, lineHeight: 1.6 }}>
+          <div style={{ ...display, fontSize: 42, fontWeight: 700 }}>Got it, {eventForm.firstName}!</div>
+          <div style={{ fontSize: 28, color: COLORS.muted, marginTop: 8, lineHeight: 1.6 }}>
             We'll review your event details and follow up at {eventForm.email} or {eventForm.phone} with a quote soon.
           </div>
           <button onClick={resetAll} style={{ ...primaryBtnStyle, marginTop: 24 }}>Back to start</button>
@@ -729,7 +730,7 @@ function OrderFlow(props) {
       <div style={{ maxWidth: 500, margin: "0 auto", padding: "20px 16px 60px" }} className="fade-in">
         <BackRow onClick={() => { setOrderType(null); setStep(0); }} />
         <div style={eyebrow}>Special Event Request</div>
-        <div style={{ ...display, fontSize: 28, fontWeight: 700, margin: "6px 0 16px" }}>Tell us about your event</div>
+        <div style={{ ...display, fontSize: 46, fontWeight: 700, margin: "6px 0 16px" }}>Tell us about your event</div>
 
         <Field label="Event date (if known)">
           <input type="date" style={inputStyle} value={eventForm.eventDate} onChange={(e) => setEventForm({ ...eventForm, eventDate: e.target.value })} />
@@ -761,8 +762,8 @@ function OrderFlow(props) {
         </Field>
 
         {eventError && (
-          <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 15, marginTop: 6 }}>
-            <AlertCircle size={16} style={{ flexShrink: 0, marginTop: 1 }} /> {eventError}
+          <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 26, marginTop: 6 }}>
+            <AlertCircle size={20} style={{ flexShrink: 0, marginTop: 1 }} /> {eventError}
           </div>
         )}
         <NextBar onClick={submitEventRequest} disabled={submittingEvent} label={submittingEvent ? "Sending…" : "Send request"} />
@@ -780,10 +781,10 @@ function OrderFlow(props) {
         <div className="fade-in">
           <BackRow onClick={() => { setOrderType(null); setStep(0); }} />
           <div style={eyebrow}>Step 1 of 4 — Build your order</div>
-          <div style={{ ...display, fontSize: 28, fontWeight: 700, margin: "6px 0 16px" }}>What are you taking home?</div>
+          <div style={{ ...display, fontSize: 46, fontWeight: 700, margin: "6px 0 16px" }}>What are you taking home?</div>
 
           <div style={cardStyle}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.muted, marginBottom: 6 }}>Size</div>
+            <div style={{ fontSize: 25, fontWeight: 700, color: COLORS.muted, marginBottom: 6 }}>Size</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
               {SIZES.map((s) => (
                 <button key={s.id} onClick={() => setBuilderSize(s.id)} style={{
@@ -791,25 +792,25 @@ function OrderFlow(props) {
                   border: builderSize === s.id ? `1px solid ${COLORS.gold}` : "1px solid #3a331f",
                   background: builderSize === s.id ? "#2b2412" : COLORS.panelLight,
                 }}>
-                  <div style={{ fontWeight: 700, fontSize: 15 }}>{s.label}</div>
-                  <div style={{ fontSize: 13, color: COLORS.muted, marginTop: 2 }}>
+                  <div style={{ fontWeight: 700, fontSize: 26 }}>{s.label}</div>
+                  <div style={{ fontSize: 24, color: COLORS.muted, marginTop: 2 }}>
                     {s.isHalfGallon ? "$50–$60" : s.dealEligible ? "$7 · 3 for $20" : `$${s.price}`}
                   </div>
                 </button>
               ))}
             </div>
-            <div style={{ fontSize: 14, color: COLORS.muted, marginBottom: 14 }}>{sizeMeta?.blurb}</div>
+            <div style={{ fontSize: 25, color: COLORS.muted, marginBottom: 14 }}>{sizeMeta?.blurb}</div>
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.muted }}>Honey type</div>
-              <button onClick={() => setShowTypeInfo(true)} style={{ background: "none", border: "none", color: COLORS.blue, display: "flex", alignItems: "center", gap: 4, fontSize: 14, fontWeight: 700 }}>
-                <Info size={13} /> What's the difference?
+              <div style={{ fontSize: 25, fontWeight: 700, color: COLORS.muted }}>Honey type</div>
+              <button onClick={() => setShowTypeInfo(true)} style={{ background: "none", border: "none", color: COLORS.blue, display: "flex", alignItems: "center", gap: 4, fontSize: 25, fontWeight: 700 }}>
+                <Info size={17} /> What's the difference?
               </button>
             </div>
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               {HONEY_TYPES.map((t) => (
                 <button key={t.id} onClick={() => setBuilderType(t.id)} style={{
-                  flex: 1, padding: "10px 8px", borderRadius: 8, fontSize: 15, fontWeight: 700,
+                  flex: 1, padding: "10px 8px", borderRadius: 8, fontSize: 26, fontWeight: 700,
                   border: builderType === t.id ? `1px solid ${COLORS.gold}` : "1px solid #3a331f",
                   background: builderType === t.id ? "#2b2412" : COLORS.panelLight, color: COLORS.cream,
                 }}>
@@ -818,22 +819,22 @@ function OrderFlow(props) {
               ))}
             </div>
 
-            <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.muted, marginBottom: 6 }}>Flavor</div>
-            {loadingData && <div style={{ color: COLORS.muted, fontSize: 15 }}>Loading flavors…</div>}
-            <FlavorGroup title="Featured" items={featuredFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Sparkles size={12} />} />
-            <FlavorGroup title="Our Core Six" items={coreFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Hexagon size={12} />} />
-            <FlavorGroup title="Seasonal Rotation" items={seasonalFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Sparkles size={12} />} />
+            <div style={{ fontSize: 25, fontWeight: 700, color: COLORS.muted, marginBottom: 6 }}>Flavor</div>
+            {loadingData && <div style={{ color: COLORS.muted, fontSize: 26 }}>Loading flavors…</div>}
+            <FlavorGroup title="Featured" items={featuredFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Sparkles size={16} />} />
+            <FlavorGroup title="Our Core Six" items={coreFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Hexagon size={16} />} />
+            <FlavorGroup title="Seasonal Rotation" items={seasonalFlavors} builderFlavorId={builderFlavorId} setBuilderFlavorId={setBuilderFlavorId} icon={<Sparkles size={16} />} />
             {builderSize === "halfgallon" && builderFlavor && (
-              <div style={{ fontSize: 14, color: COLORS.muted, marginTop: 4 }}>
+              <div style={{ fontSize: 25, color: COLORS.muted, marginTop: 4 }}>
                 {builderFlavor.name === PLAIN_FLAVOR_NAME ? "Plain raw honey — $50" : "Infused — $60"}
               </div>
             )}
 
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <button onClick={() => setBuilderQty(Math.max(1, builderQty - 1))} style={qtyBtnStyle}><Minus size={14} /></button>
+                <button onClick={() => setBuilderQty(Math.max(1, builderQty - 1))} style={qtyBtnStyle}><Minus size={18} /></button>
                 <span style={{ minWidth: 18, textAlign: "center", fontWeight: 700 }}>{builderQty}</span>
-                <button onClick={() => setBuilderQty(builderQty + 1)} style={qtyBtnStyle}><Plus size={14} /></button>
+                <button onClick={() => setBuilderQty(builderQty + 1)} style={qtyBtnStyle}><Plus size={18} /></button>
               </div>
               <button onClick={addToCart} disabled={!builderFlavor} style={{ ...primaryBtnStyle, opacity: builderFlavor ? 1 : 0.4 }}>
                 Add {builderFlavor ? `— $${(currentUnitPrice * builderQty).toFixed(2)}` : ""}
@@ -847,20 +848,20 @@ function OrderFlow(props) {
               {cart.map((i) => (
                 <div key={i.lineId} style={{ ...cardStyle, marginTop: 8, display: "flex", justifyContent: "space-between", alignItems: "center", padding: 12 }}>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: 16 }}>{i.qty}× {i.sizeLabel} — {i.flavorName}</div>
-                    <div style={{ fontSize: 14, color: COLORS.muted }}>{i.honeyType === "spun" ? "Spun" : "Regular"} · ${(i.unitPrice * i.qty).toFixed(2)}</div>
+                    <div style={{ fontWeight: 700, fontSize: 28 }}>{i.qty}× {i.sizeLabel} — {i.flavorName}</div>
+                    <div style={{ fontSize: 25, color: COLORS.muted }}>{i.honeyType === "spun" ? "Spun" : "Regular"} · ${(i.unitPrice * i.qty).toFixed(2)}</div>
                   </div>
                   <button onClick={() => removeFromCart(i.lineId)} style={{ background: "none", border: "none", color: COLORS.red, padding: 4 }}>
-                    <Trash2 size={16} />
+                    <Trash2 size={20} />
                   </button>
                 </div>
               ))}
               {qty4ozInCart > 0 && qty4ozInCart % DEAL_QTY_4OZ !== 0 && (
-                <div style={{ fontSize: 14, color: COLORS.blue, marginTop: 8 }}>
+                <div style={{ fontSize: 25, color: COLORS.blue, marginTop: 8 }}>
                   Add {DEAL_QTY_4OZ - (qty4ozInCart % DEAL_QTY_4OZ)} more 4oz jar(s) to hit the next 3-for-$20 deal.
                 </div>
               )}
-              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10, fontWeight: 800, fontSize: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10, fontWeight: 800, fontSize: 30 }}>
                 <span>Total</span><span style={{ color: COLORS.gold }}>${cartTotal.toFixed(2)}</span>
               </div>
             </div>
@@ -875,7 +876,7 @@ function OrderFlow(props) {
         <div className="fade-in">
           <BackRow onClick={() => setStep(1)} />
           <div style={eyebrow}>Step 2 of 4 — Pick your market</div>
-          <div style={{ ...display, fontSize: 28, fontWeight: 700, margin: "6px 0 16px" }}>Where will you pick up?</div>
+          <div style={{ ...display, fontSize: 46, fontWeight: 700, margin: "6px 0 16px" }}>Where will you pick up?</div>
           {loadingData && <div style={{ color: COLORS.muted }}>Loading markets…</div>}
           {!loadingData && markets.length === 0 && <EmptyNote text="No markets scheduled yet. Check back soon!" />}
           {markets.map((m) => (
@@ -883,11 +884,11 @@ function OrderFlow(props) {
               ...cardStyle, display: "block", width: "100%", textAlign: "left", marginBottom: 10,
               border: selectedMarketId === m.id ? `1px solid ${COLORS.gold}` : "1px solid #3a331f",
             }}>
-              <div style={{ ...display, fontWeight: 700, fontSize: 19 }}>{m.name}</div>
-              <div style={{ fontSize: 15, color: COLORS.muted, display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
-                <Calendar size={13} /> {fmtDate(m.date)} · {fmtTime(m.startTime)}–{fmtTime(m.endTime)}
+              <div style={{ ...display, fontWeight: 700, fontSize: 32 }}>{m.name}</div>
+              <div style={{ fontSize: 26, color: COLORS.muted, display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
+                <Calendar size={17} /> {fmtDate(m.date)} · {fmtTime(m.startTime)}–{fmtTime(m.endTime)}
               </div>
-              {m.address && <div style={{ fontSize: 15, color: COLORS.muted, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><MapPin size={13} /> {m.address}</div>}
+              {m.address && <div style={{ fontSize: 26, color: COLORS.muted, display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}><MapPin size={17} /> {m.address}</div>}
             </button>
           ))}
           <NextBar disabled={!selectedMarketId} onClick={() => setStep(3)} label="Continue to pickup time" />
@@ -899,8 +900,8 @@ function OrderFlow(props) {
         <div className="fade-in">
           <BackRow onClick={() => setStep(2)} />
           <div style={eyebrow}>Step 3 of 4 — Pick a time</div>
-          <div style={{ ...display, fontSize: 28, fontWeight: 700, margin: "6px 0 4px" }}>When will you swing by?</div>
-          <div style={{ fontSize: 15, color: COLORS.muted, marginBottom: 16 }}>{selectedMarket.name} · {fmtDate(selectedMarket.date)}</div>
+          <div style={{ ...display, fontSize: 46, fontWeight: 700, margin: "6px 0 4px" }}>When will you swing by?</div>
+          <div style={{ fontSize: 26, color: COLORS.muted, marginBottom: 16 }}>{selectedMarket.name} · {fmtDate(selectedMarket.date)}</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {generateSlots(selectedMarket).map((slot) => {
               const booked = (selectedMarket.bookings || {})[slot] || 0;
@@ -915,9 +916,9 @@ function OrderFlow(props) {
                   opacity: full ? 0.6 : 1,
                 }}>
                   <div style={{ fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
-                    <Clock size={13} /> {fmtTime(slot)}
+                    <Clock size={17} /> {fmtTime(slot)}
                   </div>
-                  <div style={{ fontSize: 13, marginTop: 3, fontWeight: 700 }}>{full ? "Full" : `${remaining} spot${remaining === 1 ? "" : "s"} left`}</div>
+                  <div style={{ fontSize: 24, marginTop: 3, fontWeight: 700 }}>{full ? "Full" : `${remaining} spot${remaining === 1 ? "" : "s"} left`}</div>
                 </button>
               );
             })}
@@ -931,13 +932,13 @@ function OrderFlow(props) {
         <div className="fade-in">
           <BackRow onClick={() => setStep(3)} />
           <div style={eyebrow}>Step 4 of 4 — Your info</div>
-          <div style={{ ...display, fontSize: 28, fontWeight: 700, margin: "6px 0 16px" }}>Who's picking up?</div>
+          <div style={{ ...display, fontSize: 46, fontWeight: 700, margin: "6px 0 16px" }}>Who's picking up?</div>
 
           <div style={{ ...cardStyle, marginBottom: 14 }}>
-            <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginBottom: 4 }}>Order</div>
-            {cart.map((i) => <div key={i.lineId} style={{ fontSize: 16, marginBottom: 2 }}>{i.qty}× {i.sizeLabel} {i.flavorName} ({i.honeyType === "spun" ? "Spun" : "Regular"})</div>)}
-            <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginTop: 10, marginBottom: 4 }}>Pickup</div>
-            <div style={{ fontSize: 16 }}>{selectedMarket.name}, {fmtDate(selectedMarket.date)} at {fmtTime(selectedSlot)}</div>
+            <div style={{ fontSize: 24, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginBottom: 4 }}>Order</div>
+            {cart.map((i) => <div key={i.lineId} style={{ fontSize: 28, marginBottom: 2 }}>{i.qty}× {i.sizeLabel} {i.flavorName} ({i.honeyType === "spun" ? "Spun" : "Regular"})</div>)}
+            <div style={{ fontSize: 24, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginTop: 10, marginBottom: 4 }}>Pickup</div>
+            <div style={{ fontSize: 28 }}>{selectedMarket.name}, {fmtDate(selectedMarket.date)} at {fmtTime(selectedSlot)}</div>
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10, paddingTop: 10, borderTop: "1px solid #3a331f", fontWeight: 800 }}>
               <span>Total (pay at pickup)</span><span style={{ color: COLORS.gold }}>${cartTotal.toFixed(2)}</span>
             </div>
@@ -952,12 +953,12 @@ function OrderFlow(props) {
           <Field label="Notes (optional)"><textarea style={{ ...inputStyle, minHeight: 60, resize: "vertical" }} value={customer.notes} onChange={(e) => setCustomer({ ...customer, notes: e.target.value })} /></Field>
 
           {errorMsg && (
-            <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 15, marginTop: 6 }}>
-              <AlertCircle size={16} style={{ flexShrink: 0, marginTop: 1 }} /> {errorMsg}
+            <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 26, marginTop: 6 }}>
+              <AlertCircle size={20} style={{ flexShrink: 0, marginTop: 1 }} /> {errorMsg}
             </div>
           )}
           <NextBar disabled={submitting} onClick={placeOrder} label={submitting ? "Reserving…" : "Reserve my order"} />
-          <div style={{ fontSize: 14, color: COLORS.muted, textAlign: "center", marginTop: 8 }}>Pay with cash or card when you pick up — nothing charged now.</div>
+          <div style={{ fontSize: 25, color: COLORS.muted, textAlign: "center", marginTop: 8 }}>Pay with cash or card when you pick up — nothing charged now.</div>
         </div>
       )}
 
@@ -967,14 +968,14 @@ function OrderFlow(props) {
           <div style={{ width: 64, height: 64, borderRadius: "50%", background: COLORS.gold, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
             <Check size={30} color="#000000" />
           </div>
-          <div style={{ ...display, fontSize: 26, fontWeight: 700 }}>You're all set, {confirmedOrder.firstName}</div>
-          <div style={{ fontSize: 15, color: COLORS.muted, margin: "6px 0 20px" }}>Confirmation #{confirmedOrder.id}</div>
+          <div style={{ ...display, fontSize: 42, fontWeight: 700 }}>You're all set, {confirmedOrder.firstName}</div>
+          <div style={{ fontSize: 26, color: COLORS.muted, margin: "6px 0 20px" }}>Confirmation #{confirmedOrder.id}</div>
           <div style={{ ...cardStyle, textAlign: "left" }}>
-            <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginBottom: 4 }}>Pickup</div>
+            <div style={{ fontSize: 24, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginBottom: 4 }}>Pickup</div>
             <div style={{ fontWeight: 700 }}>{confirmedOrder.marketName}</div>
             <div>{fmtDate(confirmedOrder.marketDate)} at {fmtTime(confirmedOrder.slot)}</div>
             {confirmedOrder.marketAddress && <div style={{ color: COLORS.muted }}>{confirmedOrder.marketAddress}</div>}
-            <div style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginTop: 12, marginBottom: 4 }}>Order</div>
+            <div style={{ fontSize: 24, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: COLORS.muted, marginTop: 12, marginBottom: 4 }}>Order</div>
             {confirmedOrder.items.map((i) => <div key={i.lineId}>{i.qty}× {i.sizeLabel} {i.flavorName} ({i.honeyType === "spun" ? "Spun" : "Regular"})</div>)}
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10, paddingTop: 10, borderTop: "1px solid #3a331f", fontWeight: 800 }}>
               <span>Due at pickup</span><span style={{ color: COLORS.gold }}>${confirmedOrder.total.toFixed(2)}</span>
@@ -990,10 +991,10 @@ function OrderFlow(props) {
           <div style={{ ...cardStyle, maxWidth: 380, width: "100%", animation: "popIn 0.2s ease both" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
               <Sparkles size={22} color={COLORS.gold} />
-              <button onClick={() => setShowUpsell(false)} style={{ background: "none", border: "none", color: COLORS.muted }}><X size={18} /></button>
+              <button onClick={() => setShowUpsell(false)} style={{ background: "none", border: "none", color: COLORS.muted }}><X size={22} /></button>
             </div>
-            <div style={{ ...display, fontSize: 22, fontWeight: 700, marginTop: 8 }}>Wait — mix &amp; match sale!</div>
-            <div style={{ fontSize: 15, color: COLORS.muted, marginTop: 6, lineHeight: 1.5 }}>
+            <div style={{ ...display, fontSize: 36, fontWeight: 700, marginTop: 8 }}>Wait — mix &amp; match sale!</div>
+            <div style={{ fontSize: 26, color: COLORS.muted, marginTop: 6, lineHeight: 1.5 }}>
               Any 3 of our 4oz jars are $20 — that's already cheaper than what you've got. Want 2 more of {builderFlavor.name} to complete the deal?
             </div>
             <button onClick={() => addUpsellJars(2)} style={{ ...primaryBtnStyle, width: "100%", marginTop: 14 }}>
@@ -1002,7 +1003,7 @@ function OrderFlow(props) {
             <button onClick={() => setShowUpsell(false)} style={{ ...secondaryBtnStyle, width: "100%", marginTop: 8 }}>
               I'll pick different flavors myself
             </button>
-            <button onClick={() => setShowUpsell(false)} style={{ background: "none", border: "none", color: COLORS.muted, fontSize: 14, width: "100%", marginTop: 8, padding: 6 }}>
+            <button onClick={() => setShowUpsell(false)} style={{ background: "none", border: "none", color: COLORS.muted, fontSize: 25, width: "100%", marginTop: 8, padding: 6 }}>
               No thanks, just the one jar
             </button>
           </div>
@@ -1014,13 +1015,13 @@ function OrderFlow(props) {
         <div style={{ position: "fixed", inset: 0, background: "#000000aa", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, zIndex: 50 }}>
           <div style={{ ...cardStyle, maxWidth: 380, width: "100%", animation: "popIn 0.2s ease both" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-              <div style={{ ...display, fontSize: 22, fontWeight: 700 }}>Regular vs. Spun</div>
-              <button onClick={() => setShowTypeInfo(false)} style={{ background: "none", border: "none", color: COLORS.muted }}><X size={18} /></button>
+              <div style={{ ...display, fontSize: 36, fontWeight: 700 }}>Regular vs. Spun</div>
+              <button onClick={() => setShowTypeInfo(false)} style={{ background: "none", border: "none", color: COLORS.muted }}><X size={22} /></button>
             </div>
             {HONEY_TYPES.map((t) => (
               <div key={t.id} style={{ marginTop: 12 }}>
-                <div style={{ fontWeight: 700, fontSize: 16, color: COLORS.gold }}>{t.label}</div>
-                <div style={{ fontSize: 15, color: COLORS.muted, marginTop: 3, lineHeight: 1.5 }}>{t.blurb}</div>
+                <div style={{ fontWeight: 700, fontSize: 28, color: COLORS.gold }}>{t.label}</div>
+                <div style={{ fontSize: 26, color: COLORS.muted, marginTop: 3, lineHeight: 1.5 }}>{t.blurb}</div>
               </div>
             ))}
             <button onClick={() => setShowTypeInfo(false)} style={{ ...primaryBtnStyle, width: "100%", marginTop: 16 }}>Got it</button>
@@ -1035,7 +1036,7 @@ function TabButton({ active, onClick, icon, label }) {
   return (
     <button onClick={onClick} style={{
       flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-      padding: "10px 4px", borderRadius: 8, border: "none", fontWeight: 700, fontSize: 14,
+      padding: "10px 4px", borderRadius: 8, border: "none", fontWeight: 700, fontSize: 25,
       background: active ? COLORS.gold : "#221d14", color: active ? "#000000" : COLORS.cream,
     }}>
       {icon} {label}
@@ -1056,12 +1057,12 @@ function AdminPanel(props) {
     return (
       <div style={{ maxWidth: 360, margin: "60px auto", padding: "0 20px", textAlign: "center" }}>
         <Lock size={28} style={{ marginBottom: 10, color: COLORS.muted }} />
-        <div style={{ ...display, fontSize: 22, fontWeight: 700, marginBottom: 10 }}>Vendor login</div>
+        <div style={{ ...display, fontSize: 36, fontWeight: 700, marginBottom: 10 }}>Vendor login</div>
         <input type="password" value={passcodeInput} onChange={(e) => setPasscodeInput(e.target.value)}
           placeholder="Passcode" style={{ ...inputStyle, textAlign: "center", marginBottom: 10 }}
           onKeyDown={(e) => { if (e.key === "Enter" && passcodeInput === ADMIN_PASSCODE) setUnlocked(true); }} />
         <button onClick={() => { if (passcodeInput === ADMIN_PASSCODE) setUnlocked(true); }} style={{ ...primaryBtnStyle, width: "100%" }}>Enter</button>
-        <div style={{ fontSize: 13, color: COLORS.muted, marginTop: 12 }}>Passcode is set in src/App.jsx — change ADMIN_PASSCODE, then rebuild and redeploy.</div>
+        <div style={{ fontSize: 24, color: COLORS.muted, marginTop: 12 }}>Passcode is set in src/App.jsx — change ADMIN_PASSCODE, then rebuild and redeploy.</div>
       </div>
     );
   }
@@ -1069,10 +1070,10 @@ function AdminPanel(props) {
   return (
     <div style={{ maxWidth: 520, margin: "0 auto", padding: "20px 16px 60px" }}>
       <div style={{ display: "flex", gap: 6, marginBottom: 18 }}>
-        <TabButton active={adminTab === "markets"} onClick={() => setAdminTab("markets")} icon={<Calendar size={13} />} label="Markets" />
-        <TabButton active={adminTab === "flavors"} onClick={() => setAdminTab("flavors")} icon={<Hexagon size={13} />} label="Flavors" />
-        <TabButton active={adminTab === "orders"} onClick={() => setAdminTab("orders")} icon={<ClipboardList size={13} />} label="Orders" />
-        <TabButton active={adminTab === "events"} onClick={() => setAdminTab("events")} icon={<PartyPopper size={13} />} label="Events" />
+        <TabButton active={adminTab === "markets"} onClick={() => setAdminTab("markets")} icon={<Calendar size={17} />} label="Markets" />
+        <TabButton active={adminTab === "flavors"} onClick={() => setAdminTab("flavors")} icon={<Hexagon size={17} />} label="Flavors" />
+        <TabButton active={adminTab === "orders"} onClick={() => setAdminTab("orders")} icon={<ClipboardList size={17} />} label="Orders" />
+        <TabButton active={adminTab === "events"} onClick={() => setAdminTab("events")} icon={<PartyPopper size={17} />} label="Events" />
       </div>
 
       {adminTab === "markets" && (
@@ -1091,7 +1092,7 @@ function AdminPanel(props) {
               <Field label="Orders per slot"><input type="number" min="1" style={inputStyle} value={newMarket.capacityPerSlot} onChange={(e) => setNewMarket({ ...newMarket, capacityPerSlot: e.target.value })} /></Field>
             </div>
             <button onClick={addMarket} disabled={addingMarket} style={{ ...primaryBtnStyle, width: "100%", marginTop: 4, opacity: addingMarket ? 0.6 : 1 }}>{addingMarket ? "Adding…" : "Add market"}</button>
-            {marketError && <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 15, marginTop: 8 }}><AlertCircle size={16} /> {marketError}</div>}
+            {marketError && <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 26, marginTop: 8 }}><AlertCircle size={20} /> {marketError}</div>}
           </div>
           <div style={eyebrow}>Upcoming markets</div>
           <div style={{ marginTop: 8 }}>
@@ -1102,10 +1103,10 @@ function AdminPanel(props) {
                 <div key={m.id} style={{ ...cardStyle, marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <div>
                     <div style={{ fontWeight: 700 }}>{m.name}</div>
-                    <div style={{ fontSize: 14, color: COLORS.muted }}>{fmtDate(m.date)} · {fmtTime(m.startTime)}–{fmtTime(m.endTime)}</div>
-                    <div style={{ fontSize: 14, color: COLORS.muted }}>{totalBooked} reservation{totalBooked === 1 ? "" : "s"} so far</div>
+                    <div style={{ fontSize: 25, color: COLORS.muted }}>{fmtDate(m.date)} · {fmtTime(m.startTime)}–{fmtTime(m.endTime)}</div>
+                    <div style={{ fontSize: 25, color: COLORS.muted }}>{totalBooked} reservation{totalBooked === 1 ? "" : "s"} so far</div>
                   </div>
-                  <button onClick={() => deleteMarket(m.id)} style={{ background: "none", border: "none", color: COLORS.red, padding: 4 }}><Trash2 size={16} /></button>
+                  <button onClick={() => deleteMarket(m.id)} style={{ background: "none", border: "none", color: COLORS.red, padding: 4 }}><Trash2 size={20} /></button>
                 </div>
               );
             })}
@@ -1122,39 +1123,39 @@ function AdminPanel(props) {
               <div style={{ display: "flex", gap: 8 }}>
                 {["core", "seasonal"].map((c) => (
                   <button key={c} onClick={() => setNewFlavor({ ...newFlavor, category: c })} style={{
-                    flex: 1, padding: "8px 0", borderRadius: 8, fontSize: 15, fontWeight: 700, textTransform: "capitalize",
+                    flex: 1, padding: "8px 0", borderRadius: 8, fontSize: 26, fontWeight: 700, textTransform: "capitalize",
                     border: newFlavor.category === c ? `1px solid ${COLORS.gold}` : "1px solid #3a331f",
                     background: newFlavor.category === c ? "#2b2412" : COLORS.panelLight, color: COLORS.cream,
                   }}>{c}</button>
                 ))}
               </div>
             </Field>
-            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 15, marginBottom: 10, color: COLORS.cream }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 26, marginBottom: 10, color: COLORS.cream }}>
               <input type="checkbox" checked={newFlavor.featured} onChange={(e) => setNewFlavor({ ...newFlavor, featured: e.target.checked })} />
               Feature this flavor at the top for customers
             </label>
             <button onClick={addFlavor} disabled={addingFlavor} style={{ ...primaryBtnStyle, width: "100%", opacity: addingFlavor ? 0.6 : 1 }}>{addingFlavor ? "Adding…" : "Add flavor"}</button>
-            {flavorError && <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 15, marginTop: 8 }}><AlertCircle size={16} /> {flavorError}</div>}
+            {flavorError && <div style={{ display: "flex", gap: 8, background: "#3a1a14", color: "#ffb4a3", padding: 10, borderRadius: 8, fontSize: 26, marginTop: 8 }}><AlertCircle size={20} /> {flavorError}</div>}
           </div>
 
           <div style={eyebrow}>All flavors</div>
-          <div style={{ fontSize: 14, color: COLORS.muted, margin: "4px 0 8px" }}>Toggle Featured to spotlight a flavor for customers. Toggle Active off to hide it without deleting it (handy for rotating flavors out for the season).</div>
+          <div style={{ fontSize: 25, color: COLORS.muted, margin: "4px 0 8px" }}>Toggle Featured to spotlight a flavor for customers. Toggle Active off to hide it without deleting it (handy for rotating flavors out for the season).</div>
           {flavors.map((f) => (
             <div key={f.id} style={{ ...cardStyle, marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
-                <div style={{ fontWeight: 700, fontSize: 16 }}>{f.name}</div>
-                <div style={{ fontSize: 13, color: COLORS.muted, textTransform: "capitalize" }}>{f.category}{!f.active ? " · hidden" : ""}</div>
+                <div style={{ fontWeight: 700, fontSize: 28 }}>{f.name}</div>
+                <div style={{ fontSize: 24, color: COLORS.muted, textTransform: "capitalize" }}>{f.category}{!f.active ? " · hidden" : ""}</div>
               </div>
               <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                 <button onClick={() => toggleFlavorField(f, "featured")} style={{
-                  fontSize: 13, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none",
+                  fontSize: 24, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none",
                   background: f.featured ? COLORS.gold : "#3a331f", color: f.featured ? "#000000" : COLORS.muted,
                 }}>Featured</button>
                 <button onClick={() => toggleFlavorField(f, "active")} style={{
-                  fontSize: 13, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none",
+                  fontSize: 24, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none",
                   background: f.active ? COLORS.blue : "#3a331f", color: f.active ? "#0B0A08" : COLORS.muted,
                 }}>Active</button>
-                <button onClick={() => deleteFlavor(f.id)} style={{ background: "none", border: "none", color: COLORS.red, padding: 4 }}><Trash2 size={14} /></button>
+                <button onClick={() => deleteFlavor(f.id)} style={{ background: "none", border: "none", color: COLORS.red, padding: 4 }}><Trash2 size={18} /></button>
               </div>
             </div>
           ))}
@@ -1173,14 +1174,14 @@ function AdminPanel(props) {
                   <div style={{ fontWeight: 700 }}>{o.firstName} {o.lastName}</div>
                   <div style={{ fontWeight: 700, color: COLORS.gold }}>${o.total.toFixed(2)}</div>
                 </div>
-                <div style={{ fontSize: 14, color: COLORS.muted }}>{o.email} · {o.phone}</div>
-                <div style={{ fontSize: 14, marginTop: 4 }}>{o.marketName} · {fmtDate(o.marketDate)} at {fmtTime(o.slot)}</div>
-                <div style={{ fontSize: 14, marginTop: 4, color: COLORS.muted }}>
+                <div style={{ fontSize: 25, color: COLORS.muted }}>{o.email} · {o.phone}</div>
+                <div style={{ fontSize: 25, marginTop: 4 }}>{o.marketName} · {fmtDate(o.marketDate)} at {fmtTime(o.slot)}</div>
+                <div style={{ fontSize: 25, marginTop: 4, color: COLORS.muted }}>
                   {o.items.map((i) => `${i.qty}× ${i.sizeLabel} ${i.flavorName} (${i.honeyType === "spun" ? "Spun" : "Regular"})`).join(", ")}
                 </div>
-                {o.notes && <div style={{ fontSize: 14, marginTop: 4, fontStyle: "italic", color: COLORS.muted }}>"{o.notes}"</div>}
+                {o.notes && <div style={{ fontSize: 25, marginTop: 4, fontStyle: "italic", color: COLORS.muted }}>"{o.notes}"</div>}
                 <button onClick={() => togglePickedUp(o)} style={{
-                  marginTop: 8, fontSize: 14, fontWeight: 700, padding: "6px 12px", borderRadius: 20, border: "none",
+                  marginTop: 8, fontSize: 25, fontWeight: 700, padding: "6px 12px", borderRadius: 20, border: "none",
                   background: o.pickedUp ? "#3a331f" : COLORS.blue, color: o.pickedUp ? COLORS.muted : "#0B0A08",
                 }}>{o.pickedUp ? "Picked up ✓" : "Mark picked up"}</button>
               </div>
@@ -1198,19 +1199,19 @@ function AdminPanel(props) {
               <div key={r.id} style={{ ...cardStyle, marginBottom: 8, opacity: r.status === "booked" ? 0.6 : 1 }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <div style={{ fontWeight: 700 }}>{r.firstName} {r.lastName}</div>
-                  <div style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", color: COLORS.orange }}>{r.status}</div>
+                  <div style={{ fontSize: 24, fontWeight: 700, textTransform: "uppercase", color: COLORS.orange }}>{r.status}</div>
                 </div>
-                <div style={{ fontSize: 14, color: COLORS.muted }}>{r.email} · {r.phone}</div>
-                <div style={{ fontSize: 15, marginTop: 6 }}><strong>Event:</strong> {r.eventType || "—"} {r.eventDate ? `· ${fmtDate(r.eventDate)}` : ""}</div>
-                <div style={{ fontSize: 15, marginTop: 2 }}><strong>Quantity:</strong> {r.quantityEstimate || "—"}</div>
-                <div style={{ fontSize: 15, marginTop: 2 }}><strong>Sizes:</strong> {r.preferredSizes || "no preference"}</div>
-                <div style={{ fontSize: 15, marginTop: 2 }}><strong>Flavors:</strong> {r.preferredFlavors || "no preference"}</div>
-                {r.budgetNote && <div style={{ fontSize: 15, marginTop: 2 }}><strong>Budget:</strong> {r.budgetNote}</div>}
-                {r.notes && <div style={{ fontSize: 14, marginTop: 4, fontStyle: "italic", color: COLORS.muted }}>"{r.notes}"</div>}
+                <div style={{ fontSize: 25, color: COLORS.muted }}>{r.email} · {r.phone}</div>
+                <div style={{ fontSize: 26, marginTop: 6 }}><strong>Event:</strong> {r.eventType || "—"} {r.eventDate ? `· ${fmtDate(r.eventDate)}` : ""}</div>
+                <div style={{ fontSize: 26, marginTop: 2 }}><strong>Quantity:</strong> {r.quantityEstimate || "—"}</div>
+                <div style={{ fontSize: 26, marginTop: 2 }}><strong>Sizes:</strong> {r.preferredSizes || "no preference"}</div>
+                <div style={{ fontSize: 26, marginTop: 2 }}><strong>Flavors:</strong> {r.preferredFlavors || "no preference"}</div>
+                {r.budgetNote && <div style={{ fontSize: 26, marginTop: 2 }}><strong>Budget:</strong> {r.budgetNote}</div>}
+                {r.notes && <div style={{ fontSize: 25, marginTop: 4, fontStyle: "italic", color: COLORS.muted }}>"{r.notes}"</div>}
                 <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
                   {["new", "contacted", "quoted", "booked"].map((s) => (
                     <button key={s} onClick={() => setEventStatus(r, s)} style={{
-                      fontSize: 13, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none", textTransform: "capitalize",
+                      fontSize: 24, fontWeight: 700, padding: "5px 10px", borderRadius: 20, border: "none", textTransform: "capitalize",
                       background: r.status === s ? COLORS.orange : "#3a331f", color: r.status === s ? "#000000" : COLORS.muted,
                     }}>{s}</button>
                   ))}
